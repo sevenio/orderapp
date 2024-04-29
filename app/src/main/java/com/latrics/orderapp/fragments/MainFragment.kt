@@ -1,23 +1,35 @@
 package com.latrics.orderapp.fragments
 
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Lifecycle
+import androidx.lifecycle.flowWithLifecycle
+import androidx.lifecycle.lifecycleScope
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
+import androidx.room.util.query
 import com.latrics.db.MenuItem
-import com.latrics.orderapp.MainFragmentDirections
 import com.latrics.orderapp.MainViewModel
 import com.latrics.orderapp.MenuAdapter
 import com.latrics.orderapp.databinding.FragmentMainBinding
+import kotlinx.coroutines.flow.collectLatest
+import kotlinx.coroutines.launch
 
 class MainFragment : Fragment() {
 
     private var binding: FragmentMainBinding? = null
+    private var menuAdapter: MenuAdapter? = null
     private val viewModel by activityViewModels<MainViewModel>()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel.insertItems(getMenuItemList())
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -31,15 +43,24 @@ class MainFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         setupRecyclerView()
+        lifecycleScope.launch {
+            viewModel.getItemsList()
+                .flowWithLifecycle(lifecycle, minActiveState = Lifecycle.State.STARTED)
+                .collectLatest {
+                    menuAdapter?.setItems(it.toMutableList())
+                }
+        }
+
     }
 
     private fun setupRecyclerView() {
         binding?.rvMenu?.apply {
             layoutManager = GridLayoutManager(requireContext(), 2)
-            adapter = MenuAdapter(getMenuItemList()){
+            menuAdapter = MenuAdapter(mutableListOf()) {
 
-               findNavController().navigate(MainFragmentDirections.actionMainFragmentToOrderFragment())
+                findNavController().navigate(MainFragmentDirections.actionMainFragmentToOrderFragment(itemId = it.id))
             }
+            adapter = menuAdapter
         }
     }
 

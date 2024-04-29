@@ -2,12 +2,14 @@ package com.latrics.db
 
 import androidx.annotation.DrawableRes
 import androidx.room.Entity
+import androidx.room.PrimaryKey
 import com.latrics.orderapp.R
 import kotlinx.parcelize.Parcelize
 
 
 @Entity
 data class MenuItem(
+    @PrimaryKey(autoGenerate = false)
     val id: Int,
     val price: Double,
     val title: String,

@@ -10,9 +10,8 @@ import com.latrics.orderapp.BuildConfig
 @Database(
     entities = [
         MenuItem::class,
-        Order::class,
 
-    ], version = 1, exportSchema = true
+    ], version = 2, exportSchema = false
 )
 abstract class MainDatabase : RoomDatabase() {
 
@@ -32,6 +31,7 @@ abstract class MainDatabase : RoomDatabase() {
                 .build()
         } else {
             Room.databaseBuilder(context, MainDatabase::class.java, DATABASE_NAME)
+
                 .build()
         }
 

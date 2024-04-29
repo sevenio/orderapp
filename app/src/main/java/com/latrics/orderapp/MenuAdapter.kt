@@ -9,8 +9,14 @@ import com.latrics.db.MenuItem
 import com.latrics.orderapp.databinding.MenuItemBinding
 
 
-class MenuAdapter(val menuItemsList: List<MenuItem>, val callback: (MenuItem) -> (Unit)) :
+class MenuAdapter(val menuItemsList: MutableList<MenuItem>, val callback: (MenuItem) -> (Unit)) :
     RecyclerView.Adapter<MenuAdapter.MenuItemViewHolder>() {
+
+        fun setItems(itemsList: MutableList<MenuItem>){
+            menuItemsList.clear()
+            menuItemsList.addAll(itemsList)
+            notifyDataSetChanged()
+        }
 
     class MenuItemViewHolder(val binding: MenuItemBinding) : RecyclerView.ViewHolder(binding.root) {
         fun bind(menuItem: MenuItem, callback: (MenuItem) -> (Unit)) {
@@ -39,7 +45,7 @@ class MenuAdapter(val menuItemsList: List<MenuItem>, val callback: (MenuItem) ->
     }
 
     override fun getItemCount(): Int {
-        return 10
+        return menuItemsList.size
     }
 
     override fun onBindViewHolder(holder: MenuItemViewHolder, position: Int) {

@@ -13,18 +13,32 @@
         <action
             android:id="@+id/action_mainFragment_to_orderFragment"
             app:destination="@id/orderFragment" />
-        <action
-            android:id="@+id/action_mainFragment_to_confirmationFragment"
-            app:destination="@id/confirmationFragment" />
     </fragment>
     <fragment
         android:id="@+id/orderFragment"
         android:name="com.latrics.orderapp.fragments.OrderFragment"
         android:label="OrderFragment"
-        tools:layout="@layout/fragment_order" />
+        tools:layout="@layout/fragment_order" >
+        <argument
+            android:name="itemId"
+            app:argType="integer"
+            android:defaultValue="0" />
+        <action
+            android:id="@+id/action_orderFragment_to_confirmationFragment"
+            app:destination="@id/confirmationFragment" />
+    </fragment>
     <fragment
         android:id="@+id/confirmationFragment"
         android:name="com.latrics.orderapp.fragments.ConfirmationFragment"
         android:label="ConfirmationFragment"
-        tools:layout="@layout/fragment_confirmation" />
+        tools:layout="@layout/fragment_confirmation" >
+        <argument
+            android:name="count"
+            app:argType="long"
+            android:defaultValue="0L" />
+        <argument
+            android:name="menuId"
+            app:argType="integer"
+            android:defaultValue="0" />
+    </fragment>
 </navigation>

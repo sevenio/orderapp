@@ -1,9 +1,10 @@
 package com.latrics.di
 
+import android.app.Application
 import com.latrics.repository.MainRepository
 
-class DependencyInjector {
+class DependencyInjector(application: Application) {
     val repository by lazy {
-        MainRepository()
+        MainRepository(application)
     }
 }
