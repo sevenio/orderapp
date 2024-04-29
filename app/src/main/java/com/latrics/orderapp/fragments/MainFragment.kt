@@ -1,18 +1,23 @@
-package com.latrics.orderapp
+package com.latrics.orderapp.fragments
 
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.GridLayoutManager
 import com.latrics.db.MenuItem
+import com.latrics.orderapp.MainFragmentDirections
+import com.latrics.orderapp.MainViewModel
+import com.latrics.orderapp.MenuAdapter
 import com.latrics.orderapp.databinding.FragmentMainBinding
 
 class MainFragment : Fragment() {
 
     private var binding: FragmentMainBinding? = null
+    private val viewModel by activityViewModels<MainViewModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater,
