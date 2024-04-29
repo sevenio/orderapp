@@ -17,7 +17,7 @@ class MenuAdapter(val menuItemsList: List<MenuItem>, val callback: (MenuItem) ->
             binding.menuItem = menuItem
             Glide
                 .with(binding.root.context)
-                .load(menuItem.image)
+                .load(MenuItem.drawableArray[menuItem.image])
                 .centerCrop()
                 .into(binding.ivImage)
             binding.root.setOnClickListener {

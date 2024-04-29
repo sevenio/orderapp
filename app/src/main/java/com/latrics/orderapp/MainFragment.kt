@@ -44,70 +44,70 @@ class MainFragment : Fragment() {
                 id = 1,
                 price = 30.0,
                 title = "Coffee",
-                image = R.drawable.coffee_crema,
+                image = 0,
                 description = "Coffee crema"
             ),
             MenuItem(
                 id = 2,
                 price = 40.0,
                 title = "Sandwich",
-                image = R.drawable.fried_egg_avocado_open_sandwich,
+                image = 1,
                 description = "Fried egg avacado open sandwich"
             ),
             MenuItem(
                 id = 3,
                 price = 50.0,
                 title = "Fruit tarts",
-                image = R.drawable.fruit_tarts,
+                image = 2,
                 description = "Fruit tarts"
             ),
             MenuItem(
                 id = 4,
                 price = 60.0,
                 title = "Strawberry Milkshake",
-                image = R.drawable.strawberry_milk_splash,
+                image = 3,
                 description = "Strawberry milkshake"
             ),
             MenuItem(
                 id = 5,
                 price = 70.0,
                 title = "Salad",
-                image = R.drawable.mediterranean_chickpea_salad,
+                image = 4,
                 description = "Mediterranean Chickpea Salad"
             ),
             MenuItem(
                 id = 6,
                 price = 80.0,
                 title = "Seafood Soup",
-                image = R.drawable.seafood_soup,
+                image = 5,
                 description = "Soup of seafood"
             ),
             MenuItem(
                 id = 7,
                 price = 90.0,
                 title = "Honey Pancakes",
-                image = R.drawable.pouring_honey_on_pancakes,
+                image = 6,
                 description = "Pancakes with honey"
             ),
             MenuItem(
                 id = 8,
                 price = 100.0,
                 title = "Pink Macrons",
-                image = R.drawable.pink_macarons,
+                image = 7,
                 description = "Pink macrons"
             ),
             MenuItem(
                 id = 9,
                 price = 110.0,
                 title = "Shrimp Noodles",
-                image = R.drawable.plate_of_noodles_with_shrimps,
+                image = 8,
                 description = "Plate of noodles with shrimps"
             ),
             MenuItem(
                 id = 10,
                 price = 120.0,
                 title = "Juicy Cheeseburger",
-                image = R.drawable.juicy_cheeseburger,
+                image = 9,
                 description = "Juicy Cheeseburger"
             ),
         )
